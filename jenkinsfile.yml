@@ -1,0 +1,14 @@
+node {
+    stage('Limpiar espacio de trabajo') {
+    cleanWs()    
+    }
+    stage('GIT') {
+     git branch: 'main', url: 'https://github.com/Manuelggg/Curso_Jenkins.git'
+            }
+    stage('Configuracion Maven') {
+    sh 'mvn clean package'
+    }
+    stage('Pruebas Unitarias') {
+    sh 'mvn test'
+    }
+}
